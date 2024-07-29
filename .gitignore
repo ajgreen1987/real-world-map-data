@@ -5,3 +5,5 @@ src/Scene Based Real World Map Data/Library/
 src/Scene Based Real World Map Data/Temp/
 src/Scene Based Real World Map Data/obj/
 src/Scene Based Real World Map Data/.vs/
+*.log
+/src/Scene Based Real World Map Data/Assets/TextMesh Pro

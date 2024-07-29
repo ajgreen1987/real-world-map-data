@@ -26,7 +26,7 @@ using System.Xml;
 /// <summary>
 /// Base Open Street Map (OSM) data node.
 /// </summary>
-class BaseOsm
+public class BaseOsm
 {
     /// <summary>
     /// Get an attribute's value from the collection using the given 'attrName'. 

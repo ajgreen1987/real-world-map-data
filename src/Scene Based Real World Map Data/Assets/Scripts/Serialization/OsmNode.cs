@@ -26,7 +26,7 @@ using UnityEngine;
 /// <summary>
 /// OSM node.
 /// </summary>
-class OsmNode : BaseOsm
+public class OsmNode : BaseOsm
 {
     /// <summary>
     /// Node ID.

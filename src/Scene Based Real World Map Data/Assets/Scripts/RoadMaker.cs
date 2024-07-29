@@ -65,7 +65,7 @@ class RoadMaker : InfrastructureBehaviour
 
             // https://en.wikipedia.org/wiki/Lane
             // According to the article, it's 3.7m in Canada
-            var cross = Vector3.Cross(diff, Vector3.up) * 3.7f * way.Lanes;
+            var cross = Vector3.Cross(diff, Vector3.up) * 3.2f * way.Lanes;
 
             // Create points that represent the width of the road
             Vector3 v1 = s1 + cross;

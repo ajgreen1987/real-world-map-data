@@ -26,7 +26,7 @@ using System.Xml;
 /// <summary>
 /// An OSM object that describes an arrangement of OsmNodes into a shape or road.
 /// </summary>
-class OsmWay : BaseOsm
+public class OsmWay : BaseOsm
 {
     /// <summary>
     /// Way ID.

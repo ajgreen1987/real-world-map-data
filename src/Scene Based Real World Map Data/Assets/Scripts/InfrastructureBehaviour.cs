@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 /*
     Copyright (c) 2017 Sloan Kelly
 
@@ -22,6 +20,9 @@ using UnityEngine;
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+
+using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Base infrastructure creator.
@@ -92,10 +93,30 @@ abstract class InfrastructureBehaviour : MonoBehaviour
         OnObjectCreated(way, localOrigin, vectors, normals, uvs, indices);
 
         // Apply the data to the mesh
-        mf.mesh.vertices = vectors.ToArray();
-        mf.mesh.normals = normals.ToArray();
-        mf.mesh.triangles = indices.ToArray();
-        mf.mesh.uv = uvs.ToArray();
+        Mesh mesh = new Mesh();
+        mesh.vertices = vectors.ToArray();
+        mesh.normals = normals.ToArray();
+        mesh.triangles = indices.ToArray();
+        mesh.uv = uvs.ToArray();
+        mf.mesh = mesh;
+
+        // Add collider and rigidbody components
+        MeshCollider meshCollider = go.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = mesh;
+        Rigidbody rb = go.AddComponent<Rigidbody>();
+        rb.isKinematic = true;
+
+        // Add TextMesh component to display the street name
+        GameObject textObject = new GameObject("StreetName");
+        textObject.transform.SetParent(go.transform);
+        // Adjust the position to be on top of the road
+        textObject.transform.localPosition = new Vector3(0, 1, 0); // Slightly above the building height
+        //textObject.transform.localRotation = Quaternion.Euler(90, 0, 0); // Rotate to face upwards
+        TextMesh textMesh = textObject.AddComponent<TextMesh>();
+        textMesh.text = objectName;
+        textMesh.fontSize = 10; 
+        textMesh.alignment = TextAlignment.Center;
+        textMesh.color = Color.yellow;
     }
 
     protected abstract void OnObjectCreated(OsmWay way, Vector3 origin, List<Vector3> vectors, List<Vector3> normals, List<Vector2> uvs, List<int> indices);

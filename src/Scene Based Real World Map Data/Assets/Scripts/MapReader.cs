@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Xml;
-using UnityEngine;
-
-/*
+﻿/*
     Copyright (c) 2017 Sloan Kelly
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,27 +19,25 @@ using UnityEngine;
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+using System.Collections.Generic;
+using System.Xml;
+using UnityEngine;
 
-class MapReader : MonoBehaviour
+public class MapReader : MonoBehaviour
 {
-    [HideInInspector]
-    public Dictionary<ulong, OsmNode> nodes;
-
-    [HideInInspector]
-    public List<OsmWay> ways;
-    
-    [HideInInspector]
-    public OsmBounds bounds;
+    public Dictionary<ulong, OsmNode> nodes; // Make public
+    public List<OsmWay> ways; // Make public
+    public OsmBounds bounds; // Make public
 
     public GameObject groundPlane;
 
     [Tooltip("The resource file that contains the OSM map data")]
-    public string resourceFile;
+    public string resourceFile; // Make public
 
     public bool IsReady { get; private set; }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         nodes = new Dictionary<ulong, OsmNode>();
         ways = new List<OsmWay>();
@@ -84,7 +78,7 @@ class MapReader : MonoBehaviour
                     Vector3 v1 = p1 - bounds.Centre;
                     Vector3 v2 = p2 - bounds.Centre;
 
-                    Debug.DrawLine(v1, v2, c);                   
+                    Debug.DrawLine(v1, v2, c);
                 }
             }
         }
@@ -113,3 +107,4 @@ class MapReader : MonoBehaviour
         bounds = new OsmBounds(xmlNode);
     }
 }
+

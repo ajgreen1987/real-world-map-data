@@ -26,7 +26,7 @@ using UnityEngine;
 /// <summary>
 /// OSM map bounds.
 /// </summary>
-class OsmBounds : BaseOsm
+public class OsmBounds : BaseOsm
 {
     /// <summary>
     /// Minimum latitude (y-axis)
