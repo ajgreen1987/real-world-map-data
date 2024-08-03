@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/*
+﻿/*
     Copyright (c) 2017 Sloan Kelly
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,6 +19,10 @@ using UnityEngine;
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Road infrastructure maker.
@@ -60,6 +60,10 @@ class RoadMaker : InfrastructureBehaviour
 
             Vector3 s1 = p1 - origin;
             Vector3 s2 = p2 - origin;
+
+            // Ensure roads are slightly above the plane
+            s1.y += 0.1f;
+            s2.y += 0.1f;
 
             Vector3 diff = (s2 - s1).normalized;
 

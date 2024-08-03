@@ -105,18 +105,6 @@ abstract class InfrastructureBehaviour : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         Rigidbody rb = go.AddComponent<Rigidbody>();
         rb.isKinematic = true;
-
-        // Add TextMesh component to display the street name
-        GameObject textObject = new GameObject("StreetName");
-        textObject.transform.SetParent(go.transform);
-        // Adjust the position to be on top of the road
-        textObject.transform.localPosition = new Vector3(0, 1, 0); // Slightly above the building height
-        //textObject.transform.localRotation = Quaternion.Euler(90, 0, 0); // Rotate to face upwards
-        TextMesh textMesh = textObject.AddComponent<TextMesh>();
-        textMesh.text = objectName;
-        textMesh.fontSize = 10; 
-        textMesh.alignment = TextAlignment.Center;
-        textMesh.color = Color.yellow;
     }
 
     protected abstract void OnObjectCreated(OsmWay way, Vector3 origin, List<Vector3> vectors, List<Vector3> normals, List<Vector2> uvs, List<int> indices);
